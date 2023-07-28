@@ -7,6 +7,16 @@ It is currently live at [pythonanywhere](http://manipta.pythonanywhere.com/)
 ## Description
 
 TOPSIS is a decision-making method used to evaluate and rank alternatives when there are multiple criteria involved. This web application allows users to upload a CSV file containing the decision matrix and specify weights for each criterion. It then calculates the relative closeness to the ideal solution for each alternative and ranks them accordingly.
+### Example: 
+You want to buy a car. There are a lot products with their own features in the market.Let say we consider following:
+- Price (Weight: 0.4): We prefer a car with a lower price as it fits our budget better.
+- Fuel Efficiency (Weight: 0.3): We want a car that offers better mileage to save on fuel costs.
+- Safety Rating (Weight: 0.2): Safety is crucial, and we want a car with a higher safety rating.
+- Comfort Level (Weight: 0.1): We also want a comfortable ride, so this criterion is important but not as much as the others.
+
+A more weightage means more priority to that feature. Also,Each car has its Rating to a particular feature based upon them we can calculate preffered car.
+
+How Algorithm Works? [Go Here!](https://en.wikipedia.org/wiki/TOPSIS#:~:text=5%20References-,Description,best%20score%20in%20each%20criterion.)
 
 ## Unique Features
 
@@ -74,3 +84,6 @@ python app.py
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Thank You
+
+Made with ❤️ by [Mani Garg](https://github.com/manipta)
