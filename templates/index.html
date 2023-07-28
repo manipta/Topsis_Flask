@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TOPSIS App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+
+<body>
+    <div class="heading"><h1>TOPSIS </h1></div>
+    <div class="contents"><form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <label for="file">Select CSV file:</label>
+        <input type="file" id="file" name="file" accept=".csv" required>
+        <br><br>
+        <label for="num_criteria">Enter the number of criteria:</label>
+        <input type="number" id="num_criteria" name="num_criteria" min="1" required oninput="generateCriterionFields()">
+        <br><br>
+        <div id="criteria_fields">
+            <!-- Criterion weight input fields will be dynamically generated here -->
+        </div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // JavaScript function to dynamically generate criterion weight input fields with pre-filled values
+        function generateCriterionFields() {
+            const numCriteria = document.getElementById("num_criteria").value;
+            const criteriaFields = document.getElementById("criteria_fields");
+            criteriaFields.innerHTML = "";
+
+            const initialWeight = (1 / numCriteria).toFixed(2);
+
+            for (let i = 0; i < numCriteria; i++) {
+                const label = document.createElement("label");
+                label.textContent = `Weight for Criteria ${i + 1}: `;
+                const input = document.createElement("input");
+                input.type = "number";
+                input.name = `weight${i}`;
+                input.step = "0.01";
+                //input.min = "0";
+                //input.max = "1";
+                input.required = true;
+                input.value = initialWeight;
+
+                criteriaFields.appendChild(label);
+                criteriaFields.appendChild(input);
+                criteriaFields.appendChild(document.createElement("br"));
+            }
+        }
+
+        // Call the function to generate criterion fields initially
+        generateCriterionFields();
+
+    </script>
+</div>
+    <footer><a href=https://github.com/manipta>Github Link of the Project</a></footer>
+</body>
+</html>
