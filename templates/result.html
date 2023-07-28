@@ -24,7 +24,7 @@
     <form action="/send_email" method="post">
         <label for="email">Want Pdf of results on email address?</label>
         <input type="email" id="email" name="email" required>
-        <input type="hidden" name="pdf_report" value="{{ pdf_report }}">
+        <input type="hidden" name="pdf_report" value="{{ pdf_file_path }}">
         <!--<input type="hidden" name="file" value="{{ file }}"> -->
         <input type="hidden" name="subject" value="{{ subject }}">
         <input type="hidden" name="body" value="{{ body }}">
