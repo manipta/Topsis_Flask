@@ -1,6 +1,5 @@
 import configparser
 from flask import Flask, render_template, request, send_file
-import pandas as pd
 import numpy as np
 import pandas as pd
 from reportlab.lib.pagesizes import letter
@@ -11,12 +10,11 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
-parser = configparser.ConfigParser()
-with open('config.ini', mode='r') as file:
-    parser.read_file(file)
-
 
 def send_email_with_attachment(recipient_email, subject, body, pdf_file_path):
+    parser = configparser.ConfigParser()
+    with open('config.ini', mode='r') as file:
+        parser.read_file(file)
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
     smtp_username = parser['login']['email']
@@ -30,12 +28,10 @@ def send_email_with_attachment(recipient_email, subject, body, pdf_file_path):
 
     with open(pdf_file_path, "rb") as f:
         attach = MIMEApplication(f.read(), _subtype="pdf")
-    attach.add_header("Content-Disposition",
-                      f"attachment; filename=topsis_results.pdf")
+    attach.add_header("Content-Disposition",f"attachment; filename=topsis_results.pdf")
     with open("temp.csv", 'rb') as file:
         attach1 = MIMEApplication(file.read(), _subtype="csv")
-    attach1.add_header("Content-Disposition",
-                       f"attachment; filename=input.csv")
+    attach1.add_header("Content-Disposition",f"attachment; filename=input.csv")
     message.attach(attach)
     message.attach(attach1)
 
@@ -43,8 +39,7 @@ def send_email_with_attachment(recipient_email, subject, body, pdf_file_path):
         smtp_connection = smtplib.SMTP(smtp_server, smtp_port)
         smtp_connection.starttls()
         smtp_connection.login(smtp_username, smtp_password)
-        smtp_connection.sendmail(
-            smtp_username, recipient_email, message.as_string())
+        smtp_connection.sendmail(smtp_username, recipient_email, message.as_string())
         smtp_connection.quit()
         return True
     except Exception as e:
