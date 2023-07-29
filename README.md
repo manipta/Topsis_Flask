@@ -4,6 +4,8 @@ This is a web application that implements the TOPSIS (Technique for Order of Pre
 
 It is currently live at [pythonanywhere](http://manipta.pythonanywhere.com/)
 
+https://github.com/manipta/Topsis_Flask/assets/72307020/cfd0cdac-5cad-45c6-8a3b-c6a8386391c4
+
 ## Description
 
 TOPSIS is a decision-making method used to evaluate and rank alternatives when there are multiple criteria involved. This web application allows users to upload a CSV file containing the decision matrix and specify weights for each criterion. It then calculates the relative closeness to the ideal solution for each alternative and ranks them accordingly.
